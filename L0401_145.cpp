@@ -14,7 +14,7 @@ void swap(T &a, T &b) {
 // Функция partition с рандомным pivot
 template<typename T, typename Compare>
 int partition(T arr[], int low, int high, Compare compare) {
-    // 🎲 Выбираем случайный индекс pivot между low и high
+    // Выбираем случайный индекс pivot между low и high
     int randomIndex = low + rand() % (high - low + 1);
     
     // Меняем выбранный элемент с последним, чтобы использовать arr[high] как pivot
