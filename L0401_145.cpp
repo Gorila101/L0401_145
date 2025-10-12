@@ -1,5 +1,10 @@
 #include <iostream>
 #include <string>
+<<<<<<< HEAD:L0401_145.cpp.txt
+#include <cstdlib>
+#include <ctime>
+#include "my_qsort.h"
+=======
 #include <cstdlib>   // для rand()
 #include <ctime>     // для srand()
 
@@ -43,6 +48,7 @@ void my_qsort(T arr[], int low, int high, Compare compare) {
         my_qsort(arr, pi + 1, high, compare);
     }
 }
+>>>>>>> a85ed9fe5a5dddd5320d903ffc06ba4264ab8dcb:L0401_145.cpp
 
 struct Student {
     std::string name;
@@ -50,22 +56,19 @@ struct Student {
 };
 
 int main() {
-    // Инициализируем генератор случайных чисел
     srand(static_cast<unsigned>(time(nullptr)));
 
-    // Пример 1: сортировка чисел
     int nums[] = {42, 7, 19, 73, 5};
     int n = sizeof(nums) / sizeof(nums[0]);
 
     my_qsort(nums, 0, n - 1, [](const int &a, const int &b) {
-        return a < b;  // сортировка по возрастанию
+        return a < b;
     });
 
     std::cout << "Сортировка чисел: ";
     for (int x : nums) std::cout << x << " ";
     std::cout << "\n";
 
-    // Пример 2: сортировка структур
     Student students[] = {
         {"Иван", 22},
         {"Мария", 19},
@@ -75,7 +78,7 @@ int main() {
     int m = sizeof(students) / sizeof(students[0]);
 
     my_qsort(students, 0, m - 1, [](const Student &a, const Student &b) {
-        return a.age < b.age;  // сортировка по возрасту
+        return a.age < b.age;
     });
 
     std::cout << "Сортировка студентов по возрасту:\n";
@@ -83,4 +86,8 @@ int main() {
         std::cout << s.name << " (" << s.age << ")\n";
 
     return 0;
+<<<<<<< HEAD:L0401_145.cpp.txt
+}
+=======
 } 
+>>>>>>> a85ed9fe5a5dddd5320d903ffc06ba4264ab8dcb:L0401_145.cpp
