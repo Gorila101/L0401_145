@@ -4,7 +4,7 @@ TARGET_MAIN = main
 TARGET_TESTS = tests
 SOURCES_MAIN = main.cpp
 SOURCES_TESTS = tests.cpp
-HEADERS = my_qsort.h
+HEADERS = my_qsort.hpp
 
 all: $(TARGET_MAIN) $(TARGET_TESTS)
 
@@ -24,3 +24,4 @@ clean:
 	rm -f $(TARGET_MAIN) $(TARGET_TESTS)
 
 .PHONY: all run_main run_tests clean
+
