@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>   // для rand()
-#include <ctime>     // для srand()
-#include "my_qsort.h" // подключаем нашу сортировку
+#include <cstdlib>   
+#include <ctime>     
+#include "my_qsort.h"
 
 struct Student {
     std::string name;
