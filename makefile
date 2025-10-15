@@ -1,27 +1,39 @@
+# Компилятор и флаги
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra
-TARGET_MAIN = main
-TARGET_TESTS = tests
-SOURCES_MAIN = main.cpp
-SOURCES_TESTS = tests.cpp
-HEADERS = my_qsort.hpp
+CXXFLAGS = -Wall -Wextra -std=c++17
 
-all: $(TARGET_MAIN) $(TARGET_TESTS)
+# Имена исходников и бинарников
+MAIN_SRC = main.cpp
+TESTS_SRC = tests.cpp
+HEADERS = my_qsort.h
 
-$(TARGET_MAIN): $(SOURCES_MAIN) $(HEADERS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET_MAIN) $(SOURCES_MAIN)
+MAIN_EXE = main
+TESTS_EXE = tests
 
-$(TARGET_TESTS): $(SOURCES_TESTS) $(HEADERS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET_TESTS) $(SOURCES_TESTS)
+# === Цели сборки ===
 
-run_main: $(TARGET_MAIN)
-	./$(TARGET_MAIN)
+# Цель по умолчанию
+all: $(MAIN_EXE) $(TESTS_EXE)
 
-run_tests: $(TARGET_TESTS)
-	./$(TARGET_TESTS)
+# Сборка основной программы
+$(MAIN_EXE): $(MAIN_SRC) $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(MAIN_SRC) -o $(MAIN_EXE)
 
+# Сборка тестов
+$(TESTS_EXE): $(TESTS_SRC) $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(TESTS_SRC) -o $(TESTS_EXE)
+
+# Очистка
 clean:
-	rm -f $(TARGET_MAIN) $(TARGET_TESTS)
+	rm -f $(MAIN_EXE) $(TESTS_EXE)
 
-.PHONY: all run_main run_tests clean
+# Запуск программы
+run: $(MAIN_EXE)
+	./$(MAIN_EXE)
+
+# Запуск тестов
+test: $(TESTS_EXE)
+	./$(TESTS_EXE)
+
+.PHONY: all clean run test
 
