@@ -1,9 +1,9 @@
 #ifndef MY_QSORT_H
 #define MY_QSORT_H
 
-#include <cstdlib>   // для rand()
+#include <cstdlib>   
+#include <ctime>     
 
-// Универсальная функция swap
 template<typename T>
 void swap(T &a, T &b) {
     T temp = a;
@@ -11,13 +11,12 @@ void swap(T &a, T &b) {
     b = temp;
 }
 
-// Функция partition с рандомным pivot
+
 template<typename T, typename Compare>
 int partition(T arr[], int low, int high, Compare compare) {
-    //  Выбираем случайный индекс pivot между low и high
+    
     int randomIndex = low + rand() % (high - low + 1);
     
-    // Меняем выбранный элемент с последним, чтобы использовать arr[high] как pivot
     swap(arr[randomIndex], arr[high]);
 
     T pivot = arr[high];
@@ -34,7 +33,7 @@ int partition(T arr[], int low, int high, Compare compare) {
     return i + 1;
 }
 
-// Рекурсивная функция QuickSort
+
 template<typename T, typename Compare>
 void my_qsort(T arr[], int low, int high, Compare compare) {
     if (low < high) {
@@ -44,4 +43,4 @@ void my_qsort(T arr[], int low, int high, Compare compare) {
     }
 }
 
-#endif // MY_QSORT_H
+#endif
